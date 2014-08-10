@@ -1,0 +1,39 @@
+{
+    "name": "<%= appNameSlug %>",
+    "description": "<%= appDescription %>",
+    "version": "<%= appVersion %>",
+    "homepage": "https://github.com/<%= userName %>/<%= appNameSlug %>",
+    "author": {
+        "name": "<%= authorName %>",
+        "email": "<%= authorEmail %>"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/<%= userName %>/<%= appNameSlug %>.git"
+    },
+    "bugs": {
+        "url": "https://github.com/<%= userName %>/<%= appNameSlug %>/issues"
+    },
+    "licenses": [{
+        "type": "<%= license %>",
+        "url": "https://github.com/<%= userName %>/<%= appNameSlug %>/blob/master/LICENSE"
+    }],
+    "main": "index.js",
+    "engines": {
+        "node": ">= 0.10.26",
+        "npm": ">=1.4.3"
+    },
+    "scripts": {
+        "test": "./node_modules/.bin/gulp test"
+    },
+    "dependencies": { 
+        "gulp": "^3.6.2",
+        "gulp-mocha": "^0.1.1",
+        "gulp-mocha-phantomjs": "^0.2.2",
+        "gulp-watch": "^0.6.5",
+        "gulp-espower": "^0.7.1"
+    },
+    "keywords": [
+        "slushgenerator", "testing", "test", "mocha"
+    ]
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>Testing</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Test Runner" />
+ 
+    <script>
+        // force mobile view where applicable
+        // see http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html
+        if (window.screen.width / window.devicePixelRatio < 380) document.write('<meta name="viewport" content="width=device-width">');
+    </script>
+    <link href="css/libs/mocha.css" rel="stylesheet"/>
+ 
+
+
+    
+</head>
+<body>  
+    <div id="container">
+        <div id="main" role="main">
+            <div id="mocha"></div>
+        </div>     
+    </div>
+    <script src="js/libs/mocha.js"></script>
+    <script src="js/tests/slow-tests.js" defer></script>
+    <script>mocha.setup('bdd')</script>
+
+    <script>
+        //mocha.checkLeaks();
+        mocha.globals(['jQuery', 'MiniProfiler', 'PR_SHOULD_USE_CONTINUATION', 'PR_TAB_WIDTH', 'prettyPrint', 'prettyPrintOne', 'PR', 'PR_normalizedHtml', '_pr_isIE6', '__screenCapturePageContext__']);
+        
+
+    </script>
+</body>
+</html>
