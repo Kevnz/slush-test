@@ -1,25 +1,29 @@
 var gulp = require('gulp'),
     mocha = require('gulp-mocha'),
     mochaPhantomJS = require('gulp-mocha-phantomjs'),
-    path = require('path');
+    path = require('path'),
+    fs=require('fs');
 
 var TESTS_PATH = './test/';
 var specWriter = function (typeOfTest) {
     var template = []; 
-    fs.readdir(path.join(TESTS_PATH, typeOf) , function (err, files) {
+    fs.readdir(path.join(TESTS_PATH, typeOfTest) , function (err, files) {
         for (var i = 0; i < files.length; i++) {
-            template.push('require("./' + typeOf + '/');
+            template.push('require("./' + typeOfTest + '/');
             template.push(files[i].replace('.js', ''));
             template.push('");\r\n');
         };
         var specs = template.join('');
-        fs.writeFile(TESTS_PATH + typeOf + '_specs.js', specs, function (err) {
+        fs.writeFile(TESTS_PATH + typeOfTest + '_specs.js', specs, function (err) {
              
         });
     });
 };
 
+gulp.task('unit-specs', function () {
+    specWriter('unit');
 
+});
 gulp.task('node-test', ['unit-specs'], function () {
     gulp.src('/test/unit_specs.js')
         .pipe(mocha({reporter: 'spec'}))

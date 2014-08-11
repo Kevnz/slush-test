@@ -14,11 +14,17 @@ var gulp = require('gulp'),
     template = require('gulp-template'),
     rename = require('gulp-rename'),
     _ = require('underscore.string'),
-    inquirer = require('inquirer');
-gulp.task('test', function (done) {
-    gulp.src(/*location*/)
-    .pipe(template(/*answers*/))
-    .pipe(rename(/*??*/))
+    inquirer = require('inquirer'),
+    args = require('yargs').argv;
+
+
+gulp.task('unit', function (done) {
+    var testName = args.name;
+    gulp.src(__dirname + '/sub-templates/unit/**')
+    .pipe(template({}))
+    .pipe(rename(function (file) {
+        if(file.basename) file.basename = testName + '_spec';
+    }))
     .pipe(gulp.dest('./test/unit'))
     done();
 });
@@ -44,14 +50,14 @@ var defaults = (function () {
 gulp.task('default', function (done) {
     var prompts = [{
         name: 'appName',
-        message: 'What is the name of your slush generator?',
+        message: 'What is the name of your app you want to test?',
         default: defaults.appName
     }, {
         name: 'appDescription',
         message: 'What is the description?'
     }, {
         name: 'appVersion',
-        message: 'What is the version of your slush generator?',
+        message: 'What is the version of your app?',
         default: '0.1.0'
     }, {
         name: 'authorName',
@@ -68,7 +74,7 @@ gulp.task('default', function (done) {
         type: 'list',
         name: 'license',
         message: 'Choose your license type',
-        choices: ['MIT', 'BSD'],
+        choices: ['MIT', 'BSD', 'Unlicense', 'Commercial'],
         default: 'MIT'
     }, {
         type: 'confirm',

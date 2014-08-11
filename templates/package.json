@@ -24,14 +24,18 @@
         "npm": ">=1.4.3"
     },
     "scripts": {
-        "test": "./node_modules/.bin/gulp test"
+        "test": "./node_modules/.bin/gulp test",
+        "unit": "./node_modules/.bin/gulp node-unit"
     },
-    "dependencies": { 
+    "dependencies": {
+        "chai": "^1.9.1",
         "gulp": "^3.6.2",
         "gulp-mocha": "^0.1.1",
         "gulp-mocha-phantomjs": "^0.2.2",
         "gulp-watch": "^0.6.5",
-        "gulp-espower": "^0.7.1"
+        "gulp-espower": "^0.7.1",
+        "mocha": "^1.21.4",
+        "power-assert": "^0.7.2"
     },
     "keywords": [
         "slushgenerator", "testing", "test", "mocha"
