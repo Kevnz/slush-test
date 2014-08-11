@@ -1,7 +1,7 @@
 {
   "name": "slush-test",
   "description": "It makes the tests",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://github.com/kevnz/slush-test",
   "author": {
     "name": "Kevin Isom",
@@ -43,6 +43,16 @@
     "slush": ">=1.0.0"
   },
   "keywords": [
-    "slushgenerator"
+    "slushgenerator", 
+    "mocha", 
+    "test", 
+    "unit-testing", 
+    "chai", 
+    "phantomjs", 
+    "testing", 
+    "dom testing", 
+    "tdd", 
+    "test driven development",
+    "bdd"
   ]
 }

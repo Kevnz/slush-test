@@ -17,17 +17,31 @@ var gulp = require('gulp'),
     inquirer = require('inquirer'),
     args = require('yargs').argv;
 
-
-gulp.task('unit', function (done) {
-    var testName = args.name;
-    gulp.src(__dirname + '/sub-templates/unit/**')
+var individualTest = function (pathForTest, testName) {
+    return gulp.src(__dirname + '/sub-templates/unit/**')
     .pipe(template({}))
     .pipe(rename(function (file) {
+        console.log(file);
         if(file.basename) file.basename = testName + '_spec';
+
+        console.log(file.basename);
     }))
-    .pipe(gulp.dest('./test/unit'))
+    .pipe(gulp.dest('./test/' + pathForTest))
     done();
+}
+gulp.task('unit', function (done) {
+    var testName = args.name;
+    individualTest('unit', testName);
 });
+gulp.task('dom', function (done) { 
+    var testName = args.name;
+    individualTest('dom', testName);
+});
+gulp.task('slow-dom', function (done) { 
+    var testName = args.name;
+    individualTest('slow-dom',testName);
+});
+ 
 function format(string) {
     var username = string.toLowerCase();
     return username.replace(/\s/g, '');
